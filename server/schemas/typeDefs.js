@@ -6,48 +6,20 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    role: String
-    firstName: String
-    lastName: String
-    createdAt: Integer
-    updatedAt: Integer
-    enabled: Boolean
-    ReviewId: ID
-    PostId: ID
   }
 
-  type Profile {
-    user: [_id!, role]
-    availability: Boolean
-    contactInfo: String
-    porfolioURL: String
-    description: String
-    review: [Review]
-    pricing: Integer
-    travelRange: Integer
+
+  type Post {
+    _id: ID 
+    author: String 
+    description: String 
   }
 
   type Review {
-    user: [_id!]
-    rating: Boolean
-    description: String
-    createdAt: Integer
-    updatedAt: Integer
-    enabled: Boolean
+    _id: ID 
+    rating: Int 
+    description: String 
   }
-
-  type HiringPost {
-    postId: ID
-    user: [_id!]
-    title: String
-    description: String
-    eventDate: Integer
-    createdAt: Integer
-    updatedAt: Integer
-    enabled: Boolean
-    contactForm: String
-    }
-
 
   type Auth {
     token: ID!
@@ -58,11 +30,13 @@ const typeDefs = gql`
     users: [User]
     user(id: ID!): User
     me: User
+    post: [Post]
   }
 
   type Mutation {
     addUser(email:String!, username:String!, password:String!): Auth
     login(email:String!, password:String!): Auth
+    addPost(author:String!, description:String!): Post
   }
 `;
 
