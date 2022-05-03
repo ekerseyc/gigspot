@@ -18,7 +18,19 @@ const userSchema = new Schema({
     type: String,
     required: true,
     minlength: 5,
-  }
+  },
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Post',
+    },
+  ],
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Review',
+    }
+  ]
 });
 
 userSchema.pre('save', async function (next) {
