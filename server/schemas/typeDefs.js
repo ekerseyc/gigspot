@@ -6,6 +6,8 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    role: String!
+    posts: [Post]
   }
 
 
@@ -18,7 +20,8 @@ const typeDefs = gql`
   type Review {
     _id: ID 
     rating: Int 
-    description: String 
+    description: String
+    reviewAuthor: String
   }
 
   type Auth {
@@ -28,15 +31,16 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(id: ID!): User
+    user(userId: ID!): User
     me: User
-    post: [Post]
+    post(postId: ID!): [Post]
   }
 
   type Mutation {
     addUser(email:String!, username:String!, password:String!): Auth
     login(email:String!, password:String!): Auth
-    addPost(author:String!, description:String!): Post
+    createPost(author:String!, description:String!): Post
+    removePost(postId:ID!): Post
   }
 `;
 
