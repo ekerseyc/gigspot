@@ -8,6 +8,7 @@ const typeDefs = gql`
     password: String!
     role: String!
     posts: [Post]
+    reviews: [Review]
   }
 
 
@@ -15,6 +16,7 @@ const typeDefs = gql`
     _id: ID 
     author: String 
     description: String 
+    category: String
   }
 
   type Review {
@@ -33,7 +35,7 @@ const typeDefs = gql`
     users: [User]
     user(userId: ID!): User
     me: User
-    post(postId: ID!): [Post]
+    post: [Post]
   }
 
   type Mutation {

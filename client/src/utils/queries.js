@@ -29,3 +29,14 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_POSTS = gql`
+query post {
+  post {
+    _id
+    author
+    description
+    category
+  }
+}
+`;

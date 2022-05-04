@@ -53,7 +53,7 @@ const resolvers = {
       return post;
     },
     removePost: async (_, { postId }) => {
-      return Post.findOneAndDelete({ _id: postId })
+      return Post.findOneAndDelete({ _id: postId });
     },
   },
 };
