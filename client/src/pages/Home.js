@@ -4,33 +4,44 @@ import { useQuery } from '@apollo/client';
 // Utilities
 import Auth from '../utils/auth';
 import { QUERY_USERS } from '../utils/queries';
+import { QUERY_POSTS } from '../utils/queries';
+
+
 // Components
 import UserList from '../components/UserList';
+import SearchForm from '../components/SearchForm';
+import SearchList from '../components/SearchList';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_USERS);
-  const users = data?.users || [];
+  // const { loading, data } = useQuery(QUERY_USERS);
+  const { loading, data } = useQuery(QUERY_POSTS);
+  console.log(data);
+  const posts = data?.post || [];
+  console.log(posts);
 
-  const renderUserList = () => {
+  const renderSearchForm = () => {
     if (loading) {
       return <h2>Loading...</h2>
     } else {
-      return <UserList users={users} title="List of Users" />
+      // Search form
+      return <SearchForm />
     }
   } 
 
-  const renderUsername = () => {
-    if (!Auth.loggedIn()) return null;
-    return Auth.getProfile().data.username;
-  }
+  const renderSearchList = () => {
+    if (loading) {
+      return <h2>Loading...</h2>
+    } else {
+      // Search form
+      return <SearchList posts={posts} />
+    }
+  } 
 
   return (
     <main>
       <div>
-        {renderUsername()}
-      </div>
-      <div>
-        {renderUserList()}
+        {renderSearchForm()}
+        {renderSearchList()}
       </div>
     </main>
   );
