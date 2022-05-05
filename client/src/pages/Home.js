@@ -9,6 +9,7 @@ import { QUERY_POSTS } from '../utils/queries';
 
 // Components
 import UserList from '../components/UserList';
+import Header from '../components/Header';
 import SearchForm from '../components/SearchForm';
 import SearchList from '../components/SearchList';
 
@@ -38,12 +39,14 @@ const Home = () => {
   } 
 
   return (
-    <main>
+    <>
+        <main>
       <div>
         {renderSearchForm()}
         {renderSearchList()}
       </div>
     </main>
+    </>
   );
 };
 
