@@ -13,6 +13,11 @@ const postSchema = new Schema({
     required: true,
     trim: true,
   },
+  category: {
+    type: String,
+    required: true,
+    trim: true,
+  },
   slug: String,
   ratingsAverage: {
     type: Number,
