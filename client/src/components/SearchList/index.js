@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 
 const PostList = ({ posts }) => {
-  if (!posts.length) {
+  if (!posts?.length) {
     return <h2>No Posts Yet...</h2>
   }
   return (
