@@ -44,6 +44,12 @@ const postSchema = new Schema({
       day: Number,
     },
   ],
+  user: 
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+
 });
 
 const Post = model("Post", postSchema);

@@ -12,7 +12,9 @@ const Header = () => {
           <img src={Logo} alt='' style={{ marginLeft: '5px', float: 'left' }} />
         </Link>
         <Navbar />
+        <Link to="/post">
         <button className='btn-primary'>Post a gig</button>
+        </Link>
       </div>
       <div>
       </div>
