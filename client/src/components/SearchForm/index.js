@@ -7,32 +7,16 @@ TODO: The username is a link to their profile
 TODO: There is a button to request a booking
 */
 
-function SearchForm() {
-  const [category, setCategory] = useState('');
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-
-    if (name === 'category') {
-      setCategory(value);
-    };
-  };
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
-    alert(`Searching for ${category}`);
-    setCategory('');
-  }
-
+function SearchForm({ handleFormSubmit, setInput, input }) {
+  
   return (
     <>
     <h2>What are you looking for today?</h2>
       <form className='searchForm'>
         <input
-          value={category}
+          value={input}
           name="category"
-          onChange={handleInputChange}
+          onChange={(event) => setInput(event.target.value)}
           type="text"
           placeholder="Search"
         />
