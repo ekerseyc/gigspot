@@ -27,10 +27,10 @@ const typeDefs = gql`
     description: String
     reviewAuthor: String
   }
-  
-  // type  Checkout {
-  //   session: ID
-  // }
+
+  #type  Checkout {
+  #  session: ID
+  #}
 
   type Auth {
     token: ID!
