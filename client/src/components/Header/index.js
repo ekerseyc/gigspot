@@ -9,10 +9,10 @@ const Header = () => {
     <header>
       <div className='header'>
         <Link to="/">
-          <img src={Logo} alt='' style={{marginLeft: '5px', float: 'left'}}/>
+          <img src={Logo} alt='' style={{ marginLeft: '5px', float: 'left' }} />
         </Link>
         <Navbar />
-      <button className='btn-primary'>Post a gig</button>
+        <button className='btn-primary'>Post a gig</button>
       </div>
       <div>
       </div>

@@ -6,8 +6,8 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
-    location: String!
-    description: String!
+    location: String
+    description: String
     role: String!
     posts: [Post]
     reviews: [Review]
@@ -45,8 +45,8 @@ const typeDefs = gql`
       email: String!
       username: String!
       password: String!
-      location: String!
-      description: String!
+      location: String
+      description: String
     ): Auth
     login(email: String!, password: String!): Auth
     createPost(author: String!, description: String!): Post
