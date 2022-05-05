@@ -11,7 +11,8 @@ function SearchForm({ handleFormSubmit, setInput, input }) {
   
   return (
     <>
-    <h2>What are you looking for today?</h2>
+    <div className='searchBox'>
+      <h2 className='searchH2'>Find your next gig in the Carolinas!</h2>
       <form className='searchForm'>
         <input
           value={input}
@@ -24,6 +25,7 @@ function SearchForm({ handleFormSubmit, setInput, input }) {
         Submit
       </button>
       </form>
+      </div>
     </>
   );
 }

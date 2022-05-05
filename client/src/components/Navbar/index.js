@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import Auth from '../../utils/auth';
+import styled from 'styled-components';
+
+const StyledLink = styled(Link)`
+color: white;
+text-decoration: none;
+&:hover {
+  color: #FFE45E;
+}
+`;
 
 function Navbar() {
   const logout = (event) => {
@@ -12,9 +20,9 @@ function Navbar() {
   if (Auth.loggedIn()) {
     return (
       <>
-        <Link to="/me">
+        <StyledLink to="/me">
           {Auth.getProfile().data.username}'s profile
-        </Link>
+        </StyledLink>
         <button onClick={logout}>
           Logout
         </button>
@@ -24,14 +32,14 @@ function Navbar() {
   // If logged out show login controls
   return (
     <>
-      <Link to="/login">
+      <StyledLink to="/login">
         Login
-      </Link>
-      <Link to="/signup">
+      </StyledLink> &nbsp;
+      <StyledLink to="/signup">
         Signup
-      </Link>
+      </StyledLink>
     </>
   )
 }
 
-export default Navbar
+export default Navbar;
