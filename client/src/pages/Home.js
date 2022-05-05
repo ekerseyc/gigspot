@@ -21,7 +21,7 @@ const Home = () => {
   const [initialPosts, setInitialPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [input, setInput] = useState([]);
-  
+
   const { loading, data } = useQuery(QUERY_POSTS);
   // Set both initial and filtered from what is given back from the query (all posts)
   useEffect(() => {
@@ -45,23 +45,23 @@ const Home = () => {
 
   return (
     <>
-        <main>
-      <div>
-        <SearchForm
-          handleFormSubmit={handleFormSubmit}
-          setInput={setInput}
-          input={input}
-        />
-
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <SearchList
-            posts={filteredPosts}
+      <main>
+        <div>
+          <SearchForm
+            handleFormSubmit={handleFormSubmit}
+            setInput={setInput}
+            input={input}
           />
-        )}
-      </div>
-    </main>
+
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <SearchList
+              posts={filteredPosts}
+            />
+          )}
+        </div>
+      </main>
     </>
   );
 };

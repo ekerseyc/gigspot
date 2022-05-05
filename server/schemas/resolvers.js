@@ -23,7 +23,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     post: async () => {
-      return Post.find();
+      return Post.find().populate('user');
     },
 
     // put below inside checkout:
