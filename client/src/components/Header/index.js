@@ -1,23 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
-import styled from 'styled-components'
-import Logo from '../../assets/Logo.svg'
+import Logo from '../../assets/Logo.svg';
 
 const Header = () => {
   return (
-    <header>
-      <div className='header'>
+    <header className='header'>
         <Link to="/">
           <img src={Logo} alt='' style={{ marginLeft: '5px', float: 'left' }} />
         </Link>
         <Navbar />
-        <Link to="/post">
-        <button className='btn-primary'>Post a gig</button>
-        </Link>
-      </div>
-      <div>
-      </div>
+      <Link to='/' className='btn-primary'>Post a gig</Link>
     </header>
   );
 };
