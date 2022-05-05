@@ -24,23 +24,22 @@ const userSchema = new Schema({
 
   location: {
     type: String,
-    trim: true,
   },
 
   description: {
     type: String,
   },
-  //   passwordConfirm: {
-  //     type: String,
-  //     required: [true, "Please confirm your password"],
-  //     validate: {
-  //       // This only work on save!
-  //       validator: function (el) {
-  //         return el === this.password;
-  //       },
-  //       message: "Passwords are not the same.",
+  // passwordConfirm: {
+  //   type: String,
+  //   required: [true, "Please confirm your password"],
+  //   validate: {
+  //     // This only work on save!
+  //     validator: function (el) {
+  //       return el === this.password;
   //     },
+  //     message: "Passwords are not the same.",
   //   },
+  // },
 
   photo: String,
   role: {
@@ -66,7 +65,6 @@ const userSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Review",
-
     },
   ],
 });
