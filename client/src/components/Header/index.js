@@ -1,18 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar';
+import styled from 'styled-components'
+import Logo from '../../assets/Logo.svg'
 
 const Header = () => {
   return (
     <header>
-      <div>
+      <div className='header'>
         <Link to="/">
-          <h1>User List</h1>
+          <img src={Logo} alt='' style={{marginLeft: '5px', float: 'left'}}/>
         </Link>
+        <Navbar />
+      <button className='btn-primary'>Post a gig</button>
       </div>
       <div>
-        <p>Simple App to View Users.</p>
-        <Navbar />
       </div>
     </header>
   );

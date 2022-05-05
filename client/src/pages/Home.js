@@ -1,38 +1,68 @@
 // Node Modules
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 // Utilities
-import Auth from '../utils/auth';
-import { QUERY_USERS } from '../utils/queries';
+// import Auth from '../utils/auth';
+// import { QUERY_USERS } from '../utils/queries';
+import { QUERY_POSTS } from '../utils/queries';
+
+
 // Components
+
 import UserList from '../components/UserList';
+import Header from '../components/Header';
+
+import SearchForm from '../components/SearchForm';
+import SearchList from '../components/SearchList';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_USERS);
-  const users = data?.users || [];
+  // const { loading, data } = useQuery(QUERY_USERS);
+  // Set state for the search result and the search query
+  const [initialPosts, setInitialPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [input, setInput] = useState([]);
+  
+  const { loading, data } = useQuery(QUERY_POSTS);
+  // Set both initial and filtered from what is given back from the query (all posts)
+  useEffect(() => {
+    setInitialPosts(data?.post);
+    setFilteredPosts(data?.post);
+  }, [data]);
 
-  const renderUserList = () => {
-    if (loading) {
-      return <h2>Loading...</h2>
-    } else {
-      return <UserList users={users} title="List of Users" />
+  // Handler for what happens when the search form is submitted
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    setInput("");
+
+    if (input === "") {
+      setFilteredPosts(initialPosts);
+      return
     }
-  } 
 
-  const renderUsername = () => {
-    if (!Auth.loggedIn()) return null;
-    return Auth.getProfile().data.username;
+    // Filter posts by the category that is input in the search bar
+    setFilteredPosts(initialPosts.filter(post => post.category.toLowerCase() === input.toLowerCase()));
   }
 
   return (
-    <main>
+    <>
+        <main>
       <div>
-        {renderUsername()}
-      </div>
-      <div>
-        {renderUserList()}
+        <SearchForm
+          handleFormSubmit={handleFormSubmit}
+          setInput={setInput}
+          input={input}
+        />
+
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <SearchList
+            posts={filteredPosts}
+          />
+        )}
       </div>
     </main>
+    </>
   );
 };
 

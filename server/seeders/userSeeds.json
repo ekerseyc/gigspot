@@ -2,6 +2,29 @@
   {
     "username": "testuser",
     "email": "test@user.com",
-    "password": "password1234"
+    "password": "password1234",
+    "location": "Charlotte",
+    "description": "user"
+  },
+  {
+    "username": "Jimi",
+    "email": "Jimi@user.com",
+    "password": "password",
+    "location": "Charlotte",
+    "description": "user"
+  },
+  {
+    "username": "Slash",
+    "email": "Slash@user.com",
+    "password": "password",
+    "location": "Charlotte",
+    "description": "user"
+  },
+  {
+    "username": "Mary",
+    "email": "Mary@user.com",
+    "password": "password",
+    "location": "Charlotte",
+    "description": "user"
   }
 ]
