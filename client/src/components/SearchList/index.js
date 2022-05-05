@@ -1,7 +1,8 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PostList = ({ posts }) => {
+  console.log(posts);
   if (!posts?.length) {
     return <h2>No Posts Yet...</h2>
   }
@@ -10,7 +11,10 @@ const PostList = ({ posts }) => {
       <h3>{posts &&
         posts.map((post) => (
           <div key={post._id}>
-            <h4>{post.author}</h4>
+            <Link
+            to={`/users/`}>
+            {post.author}
+            </Link>
             <p>{post.description}</p>
           </div>
         ))
