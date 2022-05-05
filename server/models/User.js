@@ -24,7 +24,7 @@ const userSchema = new Schema({
 
   location: {
     type: String,
-    trim: true,
+    // trim: true,
   },
 
   description: {
