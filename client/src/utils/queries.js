@@ -13,8 +13,8 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_USER = gql`
-  query user($id: ID!) {
-    user(id: $id) {
+  query user($_id: ID!) {
+    user(_id: $_id) {
       _id
       username
       email
@@ -43,6 +43,10 @@ export const QUERY_POSTS = gql`
       author
       description
       category
+      user {
+        _id
+        username
+      }
     }
   }
 `;
