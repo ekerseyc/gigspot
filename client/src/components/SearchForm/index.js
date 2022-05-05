@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 /* 
 TODO: Search by category 
 TODO: Render posts by input category

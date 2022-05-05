@@ -18,6 +18,7 @@ const typeDefs = gql`
     author: String
     description: String
     category: String
+    user: User
   }
 
   type Review {
