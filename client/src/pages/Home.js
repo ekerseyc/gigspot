@@ -11,6 +11,7 @@ import { QUERY_POSTS } from '../utils/queries';
 
 import UserList from '../components/UserList';
 import Header from '../components/Header';
+import Mission from '../components/Mission';
 
 import SearchForm from '../components/SearchForm';
 import SearchList from '../components/SearchList';
@@ -60,8 +61,11 @@ const Home = () => {
               posts={filteredPosts}
             />
           )}
-        </div>
-      </main>
+      </div>
+      <div>
+        <Mission />
+      </div>
+    </main>
     </>
   );
 };
