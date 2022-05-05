@@ -23,6 +23,10 @@ const typeDefs = gql`
     description: String
     reviewAuthor: String
   }
+  
+  // type  Checkout {
+  //   session: ID
+  // }
 
   type Auth {
     token: ID!
@@ -34,6 +38,7 @@ const typeDefs = gql`
     user(userId: ID!): User
     me: User
     post(postId: ID!): [Post]
+    // checkout here
   }
 
   type Mutation {
