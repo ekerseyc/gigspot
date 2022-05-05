@@ -62,12 +62,47 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Post",
     },
+
+     email: {
+        type: String,
+        required: true,
+        unique: true,
+        match: [/.+@.+\..+/, 'Must match an email address!'],
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 5,
+    },
+    passwordConfirm: {
+        type: String,
+        required: [true, "Please confirm your password"],
+        validate: {
+            // This only work on save!
+            validator: function (el) {
+                return el === this.password;
+            },
+            message: "Passwords are not the same.",
+        },
+    },
+    photo: String,
+    role: {
+        type: String,
+        enum: ["user", "employer", "admin"],
+        default: "user",
+    },
+    Active: {
+        type: Boolean,
+        default: true,
+        select: false,
+
   ],
 
   reviews: [
     {
       type: Schema.Types.ObjectId,
       ref: "Review",
+
     },
   ],
 });
