@@ -22,7 +22,7 @@ const resolvers = {
     },
     post: async () => {
       return Post.find().populate('user');
-    },    
+    },
 
   },
 
@@ -31,6 +31,17 @@ const resolvers = {
       const user = await User.create(args);
       const token = signToken(user);
       return { token, user };
+    },
+    editUser: async (_, args) => {
+      console.log(args)
+      return User.findOneAndUpdate(
+        { _id: args.userId },
+        { $set: { email: args.email, username: args.username, location: args.location, description: args.description } },
+        {
+          new: true,
+          runValidators: true,
+        }
+      )
     },
     login: async (_, { email, password }) => {
       const user = await User.findOne({ email });
@@ -66,6 +77,17 @@ const resolvers = {
     },
     removePost: async (_, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
+    },
+    editPost: async (_, args, context) => {
+      console.log(args)
+      return Post.findOneAndUpdate(
+        { _id: args.postId},
+        { $set: { description: args.description, category: args.category } },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     },
   },
 };
