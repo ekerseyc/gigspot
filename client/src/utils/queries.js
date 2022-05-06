@@ -32,6 +32,9 @@ export const QUERY_ME = gql`
       email
       location
       description
+      posts {
+        description
+      }
     }
   }
 `;

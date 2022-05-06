@@ -12,7 +12,7 @@ const SearchList = ({ posts }) => {
         {posts &&
           posts.map((post) => (
             <div key={post._id}>
-              <Link to={`/users/${post.user._id}`}>{post.author}</Link>
+              <Link to={`/users/${post.user?._id}`}>{post.author}</Link>
               <p>{post.description}</p>
             </div>
           ))}
