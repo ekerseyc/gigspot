@@ -8,11 +8,11 @@ import { BsCalendarWeek } from "react-icons/bs";
 // CSS grid to put them on the page
 
 // reference code
-//      <h3>
+//   <h3>
 //         {posts &&
 //           posts.map((post) => (
 //             <div key={post._id}>
-//               {post.user?.username && <Link to={`/users/${post.user?._id}`}>{post.user.username}</Link>}
+//               <Link to={`/users/${post.user?._id}`}>{post.author}</Link>
 //               <p>{post.description}</p>
 //             </div>
 //           ))}
@@ -73,7 +73,7 @@ const StyledLink = styled(Link)`
 `;
 
 const SearchList = ({ posts }) => {
-  console.log("posts", posts);
+  console.log(posts);
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
   }

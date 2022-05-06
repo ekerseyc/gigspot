@@ -48,8 +48,10 @@ const typeDefs = gql`
       location: String
       description: String
     ): Auth
+    editUser(userId: ID! email: String, username: String, location: String, description: String): Auth
     login(email: String!, password: String!): Auth
     createPost(description: String!, category: String!): Post
+    editPost(postId: ID!, description: String!, category: String!): Post
     removePost(postId: ID!): Post
   }
 `;
