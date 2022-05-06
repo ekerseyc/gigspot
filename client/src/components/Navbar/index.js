@@ -9,6 +9,24 @@ text-decoration: none;
 &:hover {
   color: #FFE45E;
 }
+font-size: large;
+`;
+
+const LogoutBtn = styled.button`
+  background: #273246;
+  font-size: medium;
+  color: white;
+  padding: 3px;
+  border: none;
+  border-radius: 4px;
+  &:focus {
+    background: white;
+    font-size: medium;
+    color: #273246;
+    padding: 3px;
+    border: none;
+    border-radius: 4px;
+ }
 `;
 
 function Navbar() {
@@ -16,16 +34,16 @@ function Navbar() {
     event.preventDefault();
     Auth.logout();
   };
-  
+
   if (Auth.loggedIn()) {
     return (
       <>
         <StyledLink to="/me">
-          {Auth.getProfile().data.username}'s profile
+          {Auth.getProfile().data.username}'s profile &nbsp;
         </StyledLink>
-        <button onClick={logout}>
+        <LogoutBtn onClick={logout}>
           Logout
-        </button>
+        </LogoutBtn>
       </>
     );
   }
