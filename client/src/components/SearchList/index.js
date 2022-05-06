@@ -92,7 +92,7 @@ const SearchList = ({ posts }) => {
           <PostDiv key={post._id}>
             <PostTitle> 
               <StyledLink
-                to={`/users/`}>
+                {post.user?.username && <Link to={`/users/${post.user?._id}`}>{post.user.username}</Link>}>
                {post.author}
               </StyledLink>
             </PostTitle>
