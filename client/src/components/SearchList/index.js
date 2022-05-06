@@ -87,16 +87,7 @@ const SearchList = ({ posts }) => {
         {posts &&
           posts.map((post) => (
             <PostDiv key={post._id}>
-              <PostTitle>
-                <StyledLink>
-                  {post.user?.username && (
-                    <Link to={`/users/${post.user?._id}`}>
-                      {post.user.username}
-                    </Link>
-                  )}
-                  {post.author}
-                </StyledLink>
-              </PostTitle>
+              <PostTitle>BEEPBOOP</PostTitle>
               <PostLocation>
                 <GoLocation /> Charlotte Location
               </PostLocation>
