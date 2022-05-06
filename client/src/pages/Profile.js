@@ -12,14 +12,17 @@ const Profile = () => {
   const { id } = useParams();
 
   // Get current user
-  const { loading, data, error } = useQuery(id ? QUERY_USER : QUERY_ME, {
-    variables: { id },
+  const queryToRun = id ? QUERY_USER : QUERY_ME;
+  const { loading, error, data } = useQuery(queryToRun, {
+    variables: { _id: id },
   });
 
+  console.log(data);
   // Get a list of all users
   const { usersLoading, data: usersData } = useQuery(QUERY_USERS);
 
   const user = data?.me || data?.user || {};
+  console.log(data);
   const users = usersData?.users || [];
 
   if (error) console.log(error);
@@ -33,11 +36,12 @@ const Profile = () => {
     return <h4>Loading...</h4>;
   }
 
-  if (!user?.username) {
+  if (id && !user?.username) {
     return (
       <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
+        {/* You need to be logged in to see this. Use the navigation links above to
+        sign up or log in! */}
+        User not found!
       </h4>
     );
   }
@@ -61,6 +65,7 @@ const Profile = () => {
     );
   };
 
+  console.log(id);
   return (
     <div>
       <div>

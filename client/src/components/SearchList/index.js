@@ -13,6 +13,18 @@ import {  BsCalendarWeek } from 'react-icons/bs';
 // 5. Apply button
 // CSS grid to put them on the page
 
+// reference code
+//   <h3>
+//         {posts &&
+//           posts.map((post) => (
+//             <div key={post._id}>
+//               <Link to={`/users/${post.user?._id}`}>{post.author}</Link>
+//               <p>{post.description}</p>
+//             </div>
+//           ))}
+//       </h3>
+//     </div>
+
 
 // Sample styled components
 // const StyledCounter = styled.div`
@@ -68,10 +80,10 @@ const StyledLink = styled(Link)`
 `;
 
 
-const PostList = ({ posts }) => {
+const SearchList = ({ posts }) => {
   console.log(posts);
   if (!posts?.length) {
-    return <h2>No Posts Yet...</h2>
+    return <h2>No Posts Yet...</h2>;
   }
   return (
     <div>
@@ -91,8 +103,7 @@ const PostList = ({ posts }) => {
         ))
       }
       </PostWrapper>
-    </div>
   );
 };
 
-export default PostList;
+export default SearchList;

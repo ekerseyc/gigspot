@@ -1,9 +1,21 @@
 import React from 'react';
+import Logo from '../../assets/Logo.svg';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer>
-      {/* Footer details HERE */}
+      <div className='footerColumn'>
+      <img src={Logo} alt=''/>
+      </div>
+      <ul>
+      <li><Link to="/login">Login</Link></li>
+      <li><Link to="/signup">Signup</Link></li>
+      <li><Link to="/profile">Profile</Link></li>
+      <li><Link to="/mission">Our Mission</Link></li>
+      </ul>
+      
+
     </footer>
   );
 };

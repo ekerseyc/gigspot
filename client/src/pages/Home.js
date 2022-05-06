@@ -1,8 +1,8 @@
 // Node Modules
-import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
+import React, { useState, useEffect } from 'react';
 // Utilities
-// import Auth from '../utils/auth';
+import Auth from '../utils/auth';
 // import { QUERY_USERS } from '../utils/queries';
 import { QUERY_POSTS } from '../utils/queries';
 
@@ -11,56 +11,49 @@ import { QUERY_POSTS } from '../utils/queries';
 
 import UserList from '../components/UserList';
 import Header from '../components/Header';
+import Mission from '../components/Mission';
 
 import SearchForm from '../components/SearchForm';
 import SearchList from '../components/SearchList';
+import Post from './Post';
 
 const Home = () => {
   // const { loading, data } = useQuery(QUERY_USERS);
-  // Set state for the search result and the search query
+  const { loading, data } = useQuery(QUERY_POSTS);
+  const posts = data?.post || [];
+
   const [initialPosts, setInitialPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [input, setInput] = useState([]);
-  
-  const { loading, data } = useQuery(QUERY_POSTS);
-  // Set both initial and filtered from what is given back from the query (all posts)
-  useEffect(() => {
-    setInitialPosts(data?.post);
-    setFilteredPosts(data?.post);
-  }, [data]);
 
-  // Handler for what happens when the search form is submitted
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    setInput("");
-
-    if (input === "") {
-      setFilteredPosts(initialPosts);
-      return
-    }
-
-    // Filter posts by the category that is input in the search bar
-    setFilteredPosts(initialPosts.filter(post => post.category.toLowerCase() === input.toLowerCase()));
-  }
+    // Set both initial and filtered from what is given back from the query (all posts)
+    useEffect(() => {
+      setInitialPosts(posts);
+      setFilteredPosts(posts);
+    }, [posts]);
 
   return (
     <>
-        <main>
+      <main>
+        {!Auth.loggedIn() ? (
       <div>
-        <SearchForm
-          handleFormSubmit={handleFormSubmit}
-          setInput={setInput}
-          input={input}
-        />
-
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <SearchList
-            posts={filteredPosts}
-          />
-        )}
+        <Mission />
       </div>
+        ) : (
+        <div>
+          <SearchForm
+          posts={initialPosts}
+          setFilteredPosts={setFilteredPosts}
+          />
+
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <SearchList
+              posts={filteredPosts}
+            />
+          )}
+      </div>
+        )}
     </main>
     </>
   );
