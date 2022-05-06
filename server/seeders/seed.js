@@ -17,19 +17,19 @@ db.once('open', async () => {
 
     const postData = [
       {
-        author: "Jimi",
+        author: user.username,
         description: "Looking for a drummer to play in my band.",
         category: "Music",
-        user: user._id
+        user: user._id,
       },
       {
-        author: "Mary",
+        author: user.username,
         description: "Need someone to illustrate the cover of my book.",
         category: "Artist",
         user: user._id
       },
       {
-        author: "Slash",
+        author: user.username,
         description: "Photographer for wedding.",
         category: "Photographer",
         user: user._id
@@ -42,8 +42,6 @@ db.once('open', async () => {
       { _id: user._id },
       { $addToSet: { posts: items.map(item => item._id) } }
     )
-
-
   } catch (err) {
     console.error(err);
     process.exit(1);

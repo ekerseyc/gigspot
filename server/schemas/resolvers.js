@@ -16,9 +16,9 @@ const resolvers = {
       return User.findOne({ _id: userId }).populate('posts');
     },
     me: async (_, args, context) => {
-      console.log('context:', context)
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        console.log(context.user);
+        return User.findOne({ _id: context.user._id }).populate('posts');
       }
       throw new AuthenticationError('You need to be logged in!');
     },

@@ -22,6 +22,7 @@ const Profile = () => {
   const { usersLoading, data: usersData } = useQuery(QUERY_USERS);
 
   const user = data?.me || data?.user || {};
+  console.log(data);
   const users = usersData?.users || [];
 
   if (error) console.log(error);
