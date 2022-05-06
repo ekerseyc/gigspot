@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { CREATE_POST } from '../utils/mutations';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { CREATE_POST } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const PostForm = () => {
   const [formState, setFormState] = useState({
-    author: '',
-    description: '',
-    category: '',
+    author: "",
+    description: "",
+    category: "",
   });
 
   const [createPost, { error, data }] = useMutation(CREATE_POST);
@@ -29,21 +29,20 @@ const PostForm = () => {
     try {
       const { data } = await createPost({
         variables: { ...formState },
-      })
-      console.log(data)
+      });
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   if (data) {
     return (
-    <p>
-      Success! You may now head{' '}
-      <Link to="/">back to the homepage.</Link>
-    </p>
-    )
-  } 
+      <p>
+        Success! You may now head <Link to="/">back to the homepage.</Link>
+      </p>
+    );
+  }
 
   return (
     <main>
@@ -68,9 +67,7 @@ const PostForm = () => {
             value={formState.category}
             onChange={handleChange}
           />
-          <button type="submit">
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </main>
