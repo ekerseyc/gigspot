@@ -79,8 +79,8 @@ const SearchList = ({ posts }) => {
   }
   return (
     <div>
-      <PostWrapper>{posts &&
-        posts.map((post) => (
+      <PostWrapper>
+        {posts && posts.map((post) => (
           <PostDiv key={post._id}>
             <PostTitle> This event </PostTitle>
             <PostLocation><GoLocation />  Charlotte Location</PostLocation>
