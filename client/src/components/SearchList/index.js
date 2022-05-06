@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import styled from 'styled-components';
+import {  GoLocation } from 'react-icons/go';
+import {  BsCalendarWeek } from 'react-icons/bs';
 
 
 // Create card style
@@ -21,7 +22,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // so user shouldn't be part of the info, but when you click the button to apply it should send to the user page...
 
 // Flex structure and container styling
-const PostContainer = styled.div`
+const PostWrapper = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
@@ -47,9 +48,11 @@ text-align: center;
 `;
 
 const PostLocation = styled.h4`
+font-size: 24px;
 `;
 
 const PostDate = styled.h4`
+font-size: 24px;
 `;
 
 const PostDescription = styled.p`
@@ -71,8 +74,8 @@ const PostList = ({ posts }) => {
     return <h2>No Posts Yet...</h2>
   }
   return (
-    <PostContainer>
-      <div>{posts &&
+    <div>
+      <PostWrapper>{posts &&
         posts.map((post) => (
           <PostDiv key={post._id}>
             <PostTitle> 
@@ -81,14 +84,14 @@ const PostList = ({ posts }) => {
                {post.author}
               </StyledLink>
             </PostTitle>
-            <PostLocation> <FontAwesomeIcon icon={["far", "coffee"]} />Charlotte Location</PostLocation>
-            <PostDate>Time Date</PostDate>
+            <PostLocation><GoLocation />  Charlotte Location</PostLocation>
+            <PostDate><BsCalendarWeek />  Time Date</PostDate>
             <PostDescription>{post.description}</PostDescription>
           </PostDiv>
         ))
       }
-      </div>
-    </PostContainer>
+      </PostWrapper>
+    </div>
   );
 };
 
