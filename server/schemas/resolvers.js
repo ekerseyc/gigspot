@@ -23,6 +23,7 @@ const resolvers = {
     post: async () => {
       return Post.find().populate('user');
     },    
+
   },
 
   Mutation: {
