@@ -1,10 +1,68 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import styled from 'styled-components';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+
+// styled const
+const SignUpWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+padding: 10px;
+`;
+
+const SignUpDiv = styled.div`
+background: #F9F9F9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+width: 25%;
+height: 50%;
+padding: 10px;
+`;
+
+const H3 = styled.h3`
+text-align: center;
+padding-top: 10px;
+`;
+
+const UserInput = styled.input`
+width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  `;
+
+const EmailInput = styled.input`
+width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-top: 10px;
+`;
+
+const PasswordInput = styled.input`
+width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-top: 10px;
+`;
+
+const SignUpBtn = styled.button`
+background: #6EBEED;
+ font-size: large;
+ color: white;
+ padding: 10px 20px;
+ border: none;
+ border-radius: 4px;
+ margin-top: 10px;
+`;
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -48,41 +106,43 @@ const Signup = () => {
     } 
     return (
       <form onSubmit={handleFormSubmit}>
-        <input
+        <UserInput
           placeholder="Your username"
           name="username"
           type="text"
           value={formState.name}
           onChange={handleChange}
         />
-        <input
+        <EmailInput
           placeholder="Your email"
           name="email"
           type="email"
           value={formState.email}
           onChange={handleChange}
         />
-        <input
+        <PasswordInput
           placeholder="******"
           name="password"
           type="password"
           value={formState.password}
           onChange={handleChange}
         />
-        <button type="submit">
+        <SignUpBtn type="submit">
           Submit
-        </button>
+        </SignUpBtn>
       </form>
     );
   };
 
   return (
     <main>
-      <h4>Sign Up</h4>
-      <div>
+      <H3>Sign Up</H3>
+      <SignUpWrapper>
+      <SignUpDiv>
         {renderForm()}
         {error && <div>{error.message}</div>}
-      </div>
+      </SignUpDiv>
+      </SignUpWrapper>
     </main>
   );
 };

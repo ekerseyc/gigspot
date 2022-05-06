@@ -49,6 +49,12 @@ width: 445px;
 height: 273px;
 `;
 
+const H2 = styled.h2`
+text-align: center;
+padding-top: 10px;
+padding-bottom: 10px;
+`;
+
 
 // Post contents in order
 const PostTitle = styled.h3`
@@ -83,16 +89,17 @@ const StyledLink = styled(Link)`
 const SearchList = ({ posts }) => {
   console.log('posts', posts);
   if (!posts?.length) {
-    return <h2>No Posts Yet...</h2>;
+    return <H2>No Posts Yet...</H2>;
   }
   return (
+    <>
     <div>
       <PostWrapper>{posts &&
         posts.map((post) => (
           <PostDiv key={post._id}>
             <PostTitle> 
-              <StyledLink
-                {post.user?.username && <Link to={`/users/${post.user?._id}`}>{post.user.username}</Link>}>
+              <StyledLink>
+                {post.user?.username && <Link to={`/users/${post.user?._id}`}>{post.user.username}</Link>}
                {post.author}
               </StyledLink>
             </PostTitle>
@@ -104,6 +111,7 @@ const SearchList = ({ posts }) => {
       }
       </PostWrapper>
     </div>
+      </>
   );
 };
 
