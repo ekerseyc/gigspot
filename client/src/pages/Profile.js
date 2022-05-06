@@ -7,6 +7,21 @@ import Auth from "../utils/auth";
 import { QUERY_USERS, QUERY_USER, QUERY_ME } from "../utils/queries";
 // Components
 import UserList from "../components/UserList";
+import styled from 'styled-components';
+
+// styled const
+const H2 = styled.h2`
+text-align: center;
+`
+const Username = styled.li`
+font-size: large;
+font-weight: bold;
+;
+`
+
+const Email = styled.li`
+font-style: italic;
+`
 
 const Profile = () => {
   const { id } = useParams();
@@ -53,8 +68,8 @@ const Profile = () => {
     if (id) return null;
     return (
       <ul>
-        <li>username: {user.username}</li>
-        <li>email: {user.email}</li>
+        <Username>{user.username}</Username>
+        <Email>{user.email}</Email>
         <li>location: {user.location}</li>
         <li>description: {user.description}</li>
       </ul>
@@ -63,8 +78,8 @@ const Profile = () => {
 
   return (
     <div>
-      <div>
-        <h2>Viewing {id ? `${user.username}'s` : "your"} profile.</h2>
+        <H2>Viewing {id ? `${user.username}'s` : "your"} profile.</H2>
+      <div className="profileCon">
         {renderCurrentUserInfo()}
         {renderUserList()}
       </div>
