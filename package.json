@@ -17,6 +17,7 @@
     "concurrently": "^7.1.0"
   },
   "dependencies": {
+    "react-icons": "^4.3.1",
     "stripe": "^8.220.0",
     "styled-components": "^5.3.5",
     "styled-react-modal": "^3.0.0"

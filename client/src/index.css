@@ -9,10 +9,13 @@ html, * {
 
 .header {
   background-color: #76A7F4;
-  text-align: center;
+  text-align: right;
   width: 100%;
   height: 100px;
-  padding: 20px; 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header, footer a {
@@ -26,7 +29,6 @@ header, footer a:hover {
 
 .logo {
   display:flex;
-  float: left;
   padding-left: 10px;
 }
 
@@ -38,7 +40,18 @@ header, footer a:hover {
   color: white;
   margin: 0 1em;
   padding: 0.25em 1em;
-  float: right;
+  text-decoration: none;
+}
+
+.btn-primary:focus {
+  background: white;
+  border-radius: 5px;
+  font-size: x-large;
+  border: 1px solid #6EBEED;
+  color: #6EBEED;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  text-decoration: none;
 }
 
 .searchbox {
@@ -62,9 +75,22 @@ footer ul {
   list-style: none;
 }
 
-  .missContainer {
+.missContainer {
     margin-left: 50px;
     margin-right: 50px;
     padding: auto;
     height: 470px;
   }
+
+.profileCon {
+  margin-left: 50px;
+  align-self: center;
+  background-color: #f9f9f9;
+  border: #273246 1px solid;
+  padding: 10px;
+  width: fit-content;
+}
+
+.profileCon ul {
+  list-style: none;
+}

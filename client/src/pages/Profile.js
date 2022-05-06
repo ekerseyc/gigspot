@@ -7,7 +7,43 @@ import Auth from "../utils/auth";
 import { QUERY_USERS, QUERY_USER, QUERY_ME } from "../utils/queries";
 // Components
 import UserList from "../components/UserList";
+import styled from 'styled-components';
 import SearchList from "../components/SearchList";
+import {  GoLocation } from 'react-icons/go';
+
+// styled const
+const ProfileWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+padding: 10px;
+`;
+
+const ProfileDiv = styled.div`
+background: #F9F9F9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+width: 50%;
+height: 50%;
+padding: 10px;
+`;
+
+const UL = styled.ul`
+list-style: none;
+`
+
+const Username = styled.li`
+font-size: x-large;
+font-weight: bold;
+`
+const H2 = styled.h2`
+text-align: center;
+padding-top: 10px;
+`
+
+const Email = styled.li`
+font-style: italic;
+`
 
 const Profile = () => {
   const { id } = useParams();
@@ -58,16 +94,16 @@ const Profile = () => {
     if (id) return null;
     return (
       <>
-      <ul>
-        <li>username: {user.username}</li>
-        <li>email: {user.email}</li>
-        <li>location: {user.location}</li>
-        <li>description: {user.description}</li>
-      </ul>
-      <div>
-        <h3>Your Posts:</h3>
-      {user.posts?.length > 0 && <SearchList posts={user.posts} />}
-      </div>
+        <UL>
+          <Username>{user.username}</Username>
+          <Email>{user.email}</Email>
+          <li><GoLocation /> {user.location}</li>
+          <li>Info: {user.description}</li>
+        </UL>
+        <div>
+          <h3>Your Posts:</h3>
+          {user.posts?.length > 0 && <SearchList posts={user.posts} />}
+        </div>
       </>
     );
   };
@@ -75,11 +111,12 @@ const Profile = () => {
   console.log('user', user.posts);
   return (
     <div>
-      <div>
-        <h2>Viewing {id ? `${user.username}'s` : "your"} profile.</h2>
+      <H2>Viewing {id ? `${user.username}'s` : "your"} profile.</H2>
+    <ProfileWrapper>
+      <ProfileDiv>
         {renderCurrentUserInfo()}
-        {renderUserList()}
-      </div>
+      </ProfileDiv>
+    </ProfileWrapper>
     </div>
   );
 };

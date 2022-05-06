@@ -2,8 +2,57 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
+import styled from 'styled-components';
 import Auth from '../utils/auth';
+
+
+// styled const
+const LoginWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
+`;
+
+const LoginDiv = styled.div`
+  background: #F9F9F9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 25%;
+  height: 50%;
+  padding: 10px;
+`;
+
+const H3 = styled.h3`
+  text-align: center;
+  padding-top: 10px;
+`;
+
+const EmailInput = styled.input`
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+`
+const PasswordInput = styled.input`
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-top: 10px;
+`
+
+const LoginBtn = styled.button`
+  background: #6EBEED;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+`
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -47,37 +96,40 @@ const Login = () => {
           <Link to="/">back to the homepage.</Link>
         </p>
       )
-    } 
+    }
     return (
       <form onSubmit={handleFormSubmit}>
-        <input
+        <EmailInput
           placeholder="Your email"
           name="email"
           type="email"
           value={formState.email}
           onChange={handleChange}
         />
-        <input
+        <PasswordInput
           placeholder="******"
           name="password"
           type="password"
           value={formState.password}
           onChange={handleChange}
         />
-        <button type="submit">
-          Submit
-        </button>
+        <LoginBtn type="submit">
+          Login
+        </LoginBtn>
       </form>
     );
   };
 
   return (
     <main>
-      <h4>Login</h4>
-      <div>
-        {renderForm()}
-        {error && <div>{error.message}</div>}
-      </div>
+      <H3>Login</H3>
+      <LoginWrapper>
+        <LoginDiv>
+          {renderForm()}
+
+          {error && <div>{error.message}</div>}
+        </LoginDiv>
+      </LoginWrapper>
     </main>
   );
 };
