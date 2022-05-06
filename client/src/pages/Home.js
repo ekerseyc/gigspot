@@ -26,10 +26,10 @@ const Home = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
 
     // Set both initial and filtered from what is given back from the query (all posts)
-    useEffect(() => {
-      setInitialPosts(posts);
-      setFilteredPosts(posts);
-    }, [posts]);
+    // useEffect(() => {
+    //   setInitialPosts(posts);
+    //   setFilteredPosts(posts);
+    // }, [posts]);
 
   return (
     <>
