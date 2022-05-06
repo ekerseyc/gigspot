@@ -7,6 +7,7 @@ import Auth from "../utils/auth";
 import { QUERY_USERS, QUERY_USER, QUERY_ME } from "../utils/queries";
 // Components
 import UserList from "../components/UserList";
+import SearchList from "../components/SearchList";
 
 const Profile = () => {
   const { id } = useParams();
@@ -56,16 +57,22 @@ const Profile = () => {
   const renderCurrentUserInfo = () => {
     if (id) return null;
     return (
+      <>
       <ul>
         <li>username: {user.username}</li>
         <li>email: {user.email}</li>
         <li>location: {user.location}</li>
         <li>description: {user.description}</li>
       </ul>
+      <div>
+        <h3>Your Posts:</h3>
+      {user.posts?.length > 0 && <SearchList posts={user.posts} />}
+      </div>
+      </>
     );
   };
 
-  console.log(id);
+  console.log('user', user.posts);
   return (
     <div>
       <div>

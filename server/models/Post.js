@@ -8,11 +8,6 @@ const postSchema = new Schema({
     maxlength: 280,
     trim: true,
   },
-  author: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   category: {
     type: String,
     required: true,

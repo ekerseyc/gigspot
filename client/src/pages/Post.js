@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { CREATE_POST } from "../utils/mutations";
 
-import Auth from "../utils/auth";
+// import Auth from '../utils/auth';
 
 const PostForm = () => {
   const [formState, setFormState] = useState({
@@ -13,6 +13,7 @@ const PostForm = () => {
   });
 
   const [createPost, { error, data }] = useMutation(CREATE_POST);
+  console.log("here", data);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
