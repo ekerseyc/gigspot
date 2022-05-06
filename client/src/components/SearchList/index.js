@@ -19,16 +19,6 @@ import { BsCalendarWeek } from "react-icons/bs";
 //       </h3>
 //     </div>
 
-<<<<<<< HEAD
-// Sample styled components
-// const StyledCounter = styled.div`
-//   /* ... */
-// `;
-=======
-
-
->>>>>>> main
-
 // so user shouldn't be part of the info, but when you click the button to apply it should send to the user page...
 
 // Flex structure and container styling
@@ -83,16 +73,20 @@ const SearchList = ({ posts }) => {
   }
   return (
     <div>
-      <PostWrapper>{posts &&
-        posts.map((post) => (
-          <PostDiv key={post._id}>
-            <PostTitle> This event </PostTitle>
-            <PostLocation><GoLocation />  Charlotte Location</PostLocation>
-            <PostDate><BsCalendarWeek />  Time Date</PostDate>
-            <PostDescription>{post.description}</PostDescription>
-          </PostDiv>
-        ))
-      }
+      <PostWrapper>
+        {posts &&
+          posts.map((post) => (
+            <PostDiv key={post._id}>
+              <PostTitle> This event </PostTitle>
+              <PostLocation>
+                <GoLocation /> Charlotte Location
+              </PostLocation>
+              <PostDate>
+                <BsCalendarWeek /> Time Date
+              </PostDate>
+              <PostDescription>{post.description}</PostDescription>
+            </PostDiv>
+          ))}
       </PostWrapper>
     </div>
   );
