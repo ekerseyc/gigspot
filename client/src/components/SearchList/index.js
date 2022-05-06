@@ -4,12 +4,7 @@ import styled from "styled-components";
 import { GoLocation } from "react-icons/go";
 import { BsCalendarWeek } from "react-icons/bs";
 
-// Create card style
-// 1. Title needs new font, change content later
-// 2. Location
-// 3. Date
-// 4. Description
-// 5. Apply button
+// Put data in styling, put in button that links to user page
 // CSS grid to put them on the page
 
 // reference code
@@ -24,10 +19,15 @@ import { BsCalendarWeek } from "react-icons/bs";
 //       </h3>
 //     </div>
 
+<<<<<<< HEAD
 // Sample styled components
 // const StyledCounter = styled.div`
 //   /* ... */
 // `;
+=======
+
+
+>>>>>>> main
 
 // so user shouldn't be part of the info, but when you click the button to apply it should send to the user page...
 
@@ -83,20 +83,16 @@ const SearchList = ({ posts }) => {
   }
   return (
     <div>
-      <PostWrapper>
-        {posts &&
-          posts.map((post) => (
-            <PostDiv key={post._id}>
-              <PostTitle>BEEPBOOP</PostTitle>
-              <PostLocation>
-                <GoLocation /> Charlotte Location
-              </PostLocation>
-              <PostDate>
-                <BsCalendarWeek /> Time Date
-              </PostDate>
-              <PostDescription>{post.description}</PostDescription>
-            </PostDiv>
-          ))}
+      <PostWrapper>{posts &&
+        posts.map((post) => (
+          <PostDiv key={post._id}>
+            <PostTitle> This event </PostTitle>
+            <PostLocation><GoLocation />  Charlotte Location</PostLocation>
+            <PostDate><BsCalendarWeek />  Time Date</PostDate>
+            <PostDescription>{post.description}</PostDescription>
+          </PostDiv>
+        ))
+      }
       </PostWrapper>
     </div>
   );
