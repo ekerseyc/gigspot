@@ -39,6 +39,7 @@ header, footer a:hover {
   margin: 0 1em;
   padding: 0.25em 1em;
   float: right;
+  text-decoration: none;
 }
 
 .searchbox {
@@ -62,9 +63,22 @@ footer ul {
   list-style: none;
 }
 
-  .missContainer {
+.missContainer {
     margin-left: 50px;
     margin-right: 50px;
     padding: auto;
     height: 470px;
   }
+
+.profileCon {
+  margin-left: 50px;
+  align-self: center;
+  background-color: #f9f9f9;
+  border: #273246 1px solid;
+  padding: 10px;
+  width: fit-content;
+}
+
+.profileCon ul {
+  list-style: none;
+}
