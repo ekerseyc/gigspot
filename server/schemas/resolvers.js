@@ -1,7 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Post, Review, TipJar } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 
 const resolvers = {
@@ -16,28 +15,15 @@ const resolvers = {
       return User.findOne({ _id: userId }).populate('posts');
     },
     me: async (_, args, context) => {
-      console.log('context:', context)
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        console.log(context.user);
+        return User.findOne({ _id: context.user._id }).populate('posts');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
     post: async () => {
       return Post.find().populate('user');
     },
-
-    // put below inside checkout:
-    
-    // const session = await stripe.checkout.sessions.create({
-    //   payment_method_types: ['card'],
-    //   line_items,
-    //   mode: 'payment',
-    //   success_url: `${url}/sucess?session_id={CHECKOUT_SESSION_ID}`,
-    //   cancel_url: `${url}/`
-    // });
-
-    // return { session: session.id };
-    
   },
 
   Mutation: {

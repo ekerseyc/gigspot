@@ -27,10 +27,6 @@ const typeDefs = gql`
     description: String
     reviewAuthor: String
   }
-  
- # type  Checkout {
-    #session: ID
- #}
 
   type Auth {
     token: ID
@@ -39,7 +35,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(userId: ID!): User
+    user(_id: ID!): User
     me: User
     post: [Post]
   }
@@ -53,7 +49,7 @@ const typeDefs = gql`
       description: String
     ): Auth
     login(email: String!, password: String!): Auth
-    createPost(author: String!, description: String!): Post
+    createPost(author: String!, description: String!, category: String!): Post
     removePost(postId: ID!): Post
   }
 `;
