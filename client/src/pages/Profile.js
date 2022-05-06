@@ -8,6 +8,7 @@ import { QUERY_USERS, QUERY_USER, QUERY_ME } from "../utils/queries";
 // Components
 import UserList from "../components/UserList";
 import styled from 'styled-components';
+import SearchList from "../components/SearchList";
 
 // styled const
 const H2 = styled.h2`
@@ -71,16 +72,22 @@ const Profile = () => {
   const renderCurrentUserInfo = () => {
     if (id) return null;
     return (
+      <>
       <ul>
         <Username>{user.username}</Username>
         <Email>{user.email}</Email>
         <li>location: {user.location}</li>
         <li>description: {user.description}</li>
       </ul>
+      <div>
+        <h3>Your Posts:</h3>
+      {user.posts?.length > 0 && <SearchList posts={user.posts} />}
+      </div>
+      </>
     );
   };
 
-  console.log(id);
+  console.log('user', user.posts);
   return (
     <div>
         <H2>Viewing {id ? `${user.username}'s` : "your"} profile.</H2>

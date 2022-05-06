@@ -2,7 +2,6 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Post, Review, TipJar } = require('../models');
 const { signToken } = require('../utils/auth');
 
-
 const resolvers = {
   Query: {
     users: async () => {
@@ -23,7 +22,8 @@ const resolvers = {
     },
     post: async () => {
       return Post.find().populate('user');
-    },
+    },    
+
   },
 
   Mutation: {
@@ -49,9 +49,20 @@ const resolvers = {
 
       return { token, user };
     },
-    createPost: async (_, args) => {
-      const post = await Post.create(args);
-      return post;
+    createPost: async (_, { description, category }, context) => {
+      if (context.user) {
+        const post = await Post.create({ description, category })
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          {
+            $addToSet: { posts: post._id },
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
     },
     removePost: async (_, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
