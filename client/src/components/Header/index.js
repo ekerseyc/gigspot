@@ -8,17 +8,20 @@ const Header = () => {
   return (
     <header className='header'>
       <Link to="/">
-        <img src={Logo} alt='' style={{ marginLeft: '5px', float: 'left' }} />
+        <img src={Logo} alt='' style={{ marginLeft: '5px' }} />
       </Link>
-      <Navbar />
-      {Auth.loggedIn() ? (
-        <Link to='/post' className='btn-primary'>Post a gig</Link>
-      ) : (
-        <>
-        <Link to="/signup"></Link>
-        <Link to="/login"></Link>
-        </>
-      )}
+      <div>
+        <Navbar />
+        {Auth.loggedIn() ? (
+          <Link to='/post' className='btn-primary'>Post a gig</Link>
+
+        ) : (
+          <>
+            <Link to="/signup"></Link>
+            <Link to="/login"></Link>
+          </>
+        )}
+      </div>
     </header>
   );
 };
