@@ -78,7 +78,7 @@ const SearchList = ({ posts }) => {
   }
   return (
     <>
-      <div>
+      <div className="wrapper">
         <PostWrapper>
           {posts &&
             posts.map((post) => (
@@ -101,6 +101,7 @@ const SearchList = ({ posts }) => {
               </PostDiv>
             ))}
         </PostWrapper>
+        <div className="push"></div>
       </div>
     </>
   );
