@@ -73,7 +73,6 @@ const StyledLink = styled(Link)`
 `;
 
 const SearchList = ({ posts }) => {
-  console.log(posts);
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
   }
@@ -85,14 +84,12 @@ const SearchList = ({ posts }) => {
             posts.map((post) => (
               <PostDiv key={post._id}>
                 <PostTitle>
-                  <StyledLink>
-                    {post.user?.username && (
-                      <Link to={`/users/${post.user?._id}`}>
-                        {post.user.username}
-                      </Link>
-                    )}
-                    {post.author}
-                  </StyledLink>
+                  {post.user?.username && (
+                    <StyledLink to={`/users/${post.user?._id}`}>
+                      {post.user.username}
+                    </StyledLink>
+                  )}
+                  {post.author}
                 </PostTitle>
                 <PostLocation>
                   <GoLocation /> Charlotte Location
