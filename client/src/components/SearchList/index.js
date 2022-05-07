@@ -79,31 +79,28 @@ const StyledLink = styled(Link)`
 
 
 const SearchList = ({ posts }) => {
-  console.log(posts);
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
   }
   return (
     <>
-    <div>
-      <PostWrapper>
-        {posts && posts.map((post) => (
-          <PostDiv key={post._id}>
-            <PostTitle> 
-              <StyledLink>
-                {post.user?.username && <Link to={`/users/${post.user?._id}`}>{post.user.username}</Link>}
-               {post.author}
-              </StyledLink>
-            </PostTitle>
-            <PostLocation><GoLocation />  Charlotte Location</PostLocation>
-            <PostDate><BsCalendarWeek />  Time Date</PostDate>
-            <PostDescription>{post.description}</PostDescription>
-          </PostDiv>
-        ))
-      }
-      </PostWrapper>
-    </div>
-      </>
+      <div>
+        <PostWrapper>
+          {posts && posts.map((post) => (
+            <PostDiv key={post._id}>
+              <PostTitle>
+                {post.user?.username && <StyledLink to={`/users/${post.user?._id}`}>{post.user.username}</StyledLink>}
+                {post.author}
+              </PostTitle>
+              <PostLocation><GoLocation />  Charlotte Location</PostLocation>
+              <PostDate><BsCalendarWeek />  Time Date</PostDate>
+              <PostDescription>{post.description}</PostDescription>
+            </PostDiv>
+          ))
+          }
+        </PostWrapper>
+      </div>
+    </>
   );
 };
 

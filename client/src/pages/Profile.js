@@ -47,6 +47,7 @@ font-style: italic;
 
 const Profile = () => {
   const { id } = useParams();
+  console.log(id);
 
   // Get current user
   const queryToRun = id ? QUERY_USER : QUERY_ME;
@@ -54,13 +55,13 @@ const Profile = () => {
     variables: { _id: id },
   });
 
-  console.log(data);
   // Get a list of all users
   const { usersLoading, data: usersData } = useQuery(QUERY_USERS);
+  console.log(usersData);
 
   const user = data?.me || data?.user || {};
-  console.log(data);
-  const users = usersData?.users || [];
+ 
+  const users = data?.users || [];
 
   if (error) console.log(error);
 
@@ -91,7 +92,7 @@ const Profile = () => {
   };
 
   const renderCurrentUserInfo = () => {
-    if (id) return null;
+    if (!users || !user) return <p>Not Found</p>;
     return (
       <>
         <UL>
@@ -108,10 +109,9 @@ const Profile = () => {
     );
   };
 
-  console.log('user', user.posts);
   return (
     <div>
-      <H2>Viewing {id ? `${user.username}'s` : "your"} profile.</H2>
+      <H2>Viewing {users? `${user.username}'s` : "your"} profile.</H2>
     <ProfileWrapper>
       <ProfileDiv>
         {renderCurrentUserInfo()}
