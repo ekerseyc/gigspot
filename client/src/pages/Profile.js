@@ -20,7 +20,7 @@ padding: 10px;
 `;
 
 const ProfileDiv = styled.div`
-background: #F9F9F9;
+background: #76A7F4;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 width: 50%;
@@ -30,20 +30,29 @@ padding: 10px;
 
 const UL = styled.ul`
 list-style: none;
-`
+color: white;
+`;
 
 const Username = styled.li`
 font-size: x-large;
 font-weight: bold;
-`
+`;
+
 const H2 = styled.h2`
 text-align: center;
 padding-top: 10px;
-`
+`;
 
 const Email = styled.li`
 font-style: italic;
-`
+`;
+
+const H3 = styled.h3`
+text-align: center;
+padding-top: 10px;
+color: white;
+font-weight: lighter;
+`;
 
 const Profile = () => {
   const { id } = useParams();
@@ -95,7 +104,7 @@ const Profile = () => {
           <li>Info: {user.description}</li>
         </UL>
         <div>
-          <h3>Your Posts:</h3>
+          <H3>Your Posts:</H3>
           {user.posts?.length > 0 && <SearchList posts={user.posts} />}
         </div>
       </>
