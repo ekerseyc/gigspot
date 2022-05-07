@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_POST } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
 import styled from 'styled-components';
+import { useEffect } from 'react/cjs/react.production.min';
 
 // import Auth from '../utils/auth';
 
@@ -66,14 +68,17 @@ background: #6EBEED;
 `;
 
 const PostForm = () => {
+
+  const [createPost, { error, data }] = useMutation(CREATE_POST);
+  const { loading, error: meError, data: meData } = useQuery(QUERY_ME);
+  console.log(meData)
+
+
   const [formState, setFormState] = useState({
-    author: '',
+  
     description: '',
     category: '',
   });
-
-  const [createPost, { error, data }] = useMutation(CREATE_POST);
-  console.log('here', data);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -89,7 +94,7 @@ const PostForm = () => {
 
     try {
       const { data } = await createPost({
-        variables: { ...formState },
+        variables: { ...formState, user: meData },
       })
       console.log(data)
     } catch (err) {
@@ -99,12 +104,12 @@ const PostForm = () => {
 
   if (data) {
     return (
-    <p>
-      Success! You may now head{' '}
-      <Link to="/">back to the homepage.</Link>
-    </p>
+      <p>
+        Success! You may now head{' '}
+        <Link to="/">back to the homepage.</Link>
+      </p>
     )
-  } 
+  }
 
   return (
     <main>
@@ -112,34 +117,34 @@ const PostForm = () => {
       <PostWrapper>
         <PostDiv>
 
-      <form onSubmit={handleFormSubmit}>
-        
-        <div>
-          <NameInput
-            placeholder="Name..."
-            name="author"
-            value={formState.author}
-            onChange={handleChange}
-            />
-            <CatInput
-              placeholder="Category..."
-              name="category"
-              value={formState.category}
-              onChange={handleChange}
+          <form onSubmit={handleFormSubmit}>
+
+            <div>
+              <NameInput
+                placeholder="Name..."
+                name="author"
+                value={formState.author}
+                onChange={handleChange}
               />
-          <DescInput
-            placeholder="Description (date, time, etc)..."
-            name="description"
-            value={formState.description}
-            onChange={handleChange}
-            />
-          <SubmitBtn type="submit">
-            Submit
-          </SubmitBtn>
-        </div>
-      </form>
-            </PostDiv>
-            </PostWrapper>
+              <CatInput
+                placeholder="Category..."
+                name="category"
+                value={formState.category}
+                onChange={handleChange}
+              />
+              <DescInput
+                placeholder="Description (date, time, etc)..."
+                name="description"
+                value={formState.description}
+                onChange={handleChange}
+              />
+              <SubmitBtn type="submit">
+                Submit
+              </SubmitBtn>
+            </div>
+          </form>
+        </PostDiv>
+      </PostWrapper>
     </main>
   );
 };

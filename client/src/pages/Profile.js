@@ -57,7 +57,7 @@ const Profile = () => {
 
   // Get a list of all users
   const { usersLoading, data: usersData } = useQuery(QUERY_USERS);
-  console.log(usersData);
+  console.log(data);
 
   const user = data?.me || data?.user || {};
  
@@ -77,19 +77,10 @@ const Profile = () => {
   if (id && !user?.username) {
     return (
       <h4>
-        {/* You need to be logged in to see this. Use the navigation links above to
-        sign up or log in! */}
         User not found!
       </h4>
     );
   }
-
-  const renderUserList = () => {
-    if (usersLoading) return null;
-    // Only renders users who's profile we're not currently viewing
-    const notMeUsers = users.filter((o) => o._id !== user._id);
-    return <UserList users={notMeUsers} title="User List" />;
-  };
 
   const renderCurrentUserInfo = () => {
     if (!users || !user) return <p>Not Found</p>;

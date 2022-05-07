@@ -39,11 +39,14 @@ export const ADD_USER = gql`
 `;
 
 export const CREATE_POST = gql`
- mutation CreatePost($description: String!, $category: String!) {
+ mutation createPost($description: String!, $category: String!) {
   createPost(description: $description, category: $category) {
     _id
     description
     category
+    user {
+      username
+    }
   }
 }
 `;

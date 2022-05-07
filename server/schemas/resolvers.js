@@ -37,10 +37,7 @@ const resolvers = {
       return User.findOneAndUpdate(
         { _id: args.userId },
         { $set: { email: args.email, username: args.username, location: args.location, description: args.description } },
-        {
-          new: true,
-          runValidators: true,
-        }
+        { new: true, runValidators: true }
       )
     },
     login: async (_, { email, password }) => {
