@@ -20,10 +20,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    post: async () => {
+    post: async (_, args, context) => {
+      console.log("context", context.user);
       return Post.find().populate('user');
     },
-
   },
 
   Mutation: {
@@ -61,17 +61,14 @@ const resolvers = {
       return { token, user };
     },
     createPost: async (_, { description, category }, context) => {
+      console.log('create post:', context.user)
       if (context.user) {
-        const post = await Post.create({ description, category })
+        const post = await Post.create({ description, category });
+        console.log('postid', post._id)
         return User.findOneAndUpdate(
           { _id: context.user._id },
-          {
-            $addToSet: { posts: post._id },
-          },
-          {
-            new: true,
-            runValidators: true,
-          }
+          { $addToSet: { posts: post._id } },
+          { new: true, runValidators: true }
         );
       }
     },
@@ -81,12 +78,9 @@ const resolvers = {
     editPost: async (_, args, context) => {
       console.log(args)
       return Post.findOneAndUpdate(
-        { _id: args.postId},
+        { _id: args.postId },
         { $set: { description: args.description, category: args.category } },
-        {
-          new: true,
-          runValidators: true,
-        }
+        { new: true, runValidators: true }
       );
     },
   },
