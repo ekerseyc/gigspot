@@ -23,6 +23,7 @@ import { BsCalendarWeek } from "react-icons/bs";
 
 // Flex structure and container styling
 const PostWrapper = styled.div`
+<<<<<<< HEAD
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -35,6 +36,25 @@ const PostDiv = styled.div`
   border-radius: 10px;
   width: 445px;
   height: 273px;
+=======
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin: 20px;
+padding-bottom: 10px;
+`;
+
+const PostDiv = styled.div`
+height: 100px;
+background: #F9F9F9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+width: 445px;
+height: 273px;
+padding: 10px;
+margin-bottom: 20px;
+margin-right: 5px;
+>>>>>>> main
 `;
 
 const H2 = styled.h2`
@@ -72,6 +92,26 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `;
 
+const GigBtn = styled.button`
+  background: #6ebeed;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  float: right;
+  &:focus {
+    background: white;
+    font-size: large;
+    color: #6ebeed;
+    padding: 10px 20px;
+    border: 1px solid #6ebeed;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+`;
+
 const SearchList = ({ posts }) => {
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
@@ -92,12 +132,13 @@ const SearchList = ({ posts }) => {
                   {post.author}
                 </PostTitle>
                 <PostLocation>
-                  <GoLocation /> Charlotte Location
+                  <GoLocation /> {post.location}
                 </PostLocation>
                 <PostDate>
-                  <BsCalendarWeek /> Time Date
+                  <BsCalendarWeek /> {post.date}
                 </PostDate>
                 <PostDescription>{post.description}</PostDescription>
+                <GigBtn>Apply</GigBtn>
               </PostDiv>
             ))}
         </PostWrapper>
