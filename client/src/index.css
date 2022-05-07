@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap");
 
-html, * {
+html,
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Red Hat Display', sans-serif;
+  font-family: "Red Hat Display", sans-serif;
 }
 
 .header {
-  background-color: #76A7F4;
+  background-color: #76a7f4;
   text-align: right;
   width: 100%;
   height: 100px;
@@ -18,22 +19,24 @@ html, * {
   align-items: center;
 }
 
-header, footer a {
-color: white;
-text-decoration: none;
+header,
+footer a {
+  color: white;
+  text-decoration: none;
 }
 
-header, footer a:hover {
-  color: #FFE45E;
+header,
+footer a:hover {
+  color: #ffe45e;
 }
 
 .logo {
-  display:flex;
+  display: flex;
   padding-left: 10px;
 }
 
 .btn-primary {
-  background: #6EBEED;
+  background: #6ebeed;
   border-radius: 5px;
   font-size: x-large;
   border: 1px solid white;
@@ -47,8 +50,8 @@ header, footer a:hover {
   background: white;
   border-radius: 5px;
   font-size: x-large;
-  border: 1px solid #6EBEED;
-  color: #6EBEED;
+  border: 1px solid #6ebeed;
+  color: #6ebeed;
   margin: 0 1em;
   padding: 0.25em 1em;
   text-decoration: none;
@@ -80,14 +83,18 @@ header, footer a:hover {
 }
 
 footer {
-background-color: #273246;
-width: 100%;
-margin-bottom: 100;
-padding: 40px;
-color: white;
-text-align: left;
-display: grid;
-grid-template-columns: 33.3% auto;
+  background-color: #273246;
+  width: 100%;
+  margin-bottom: 100;
+  padding: 40px;
+  color: white;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 33.3% auto;
+}
+
+.wrapper {
+  min-height: 100%;
 }
 
 footer ul {
@@ -97,11 +104,11 @@ footer ul {
 }
 
 .missContainer {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: auto;
-    height: 470px;
-  }
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: auto;
+  height: 470px;
+}
 
 .profileCon {
   margin-left: 50px;
