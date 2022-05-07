@@ -82,26 +82,6 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `;
 
-const GigBtn = styled.button`
-  background: #6EBEED;
-  font-size: large;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  margin-top: 10px;
-  float: right;
-  &:focus {
-    background: white;
-  font-size: large;
-  color: #6EBEED;
-  padding: 10px 20px;
-  border: 1px solid #6EBEED;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-`;
-
 const SearchList = ({ posts }) => {
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
@@ -119,7 +99,7 @@ const SearchList = ({ posts }) => {
               <PostLocation><GoLocation /> {post.location}</PostLocation>
               <PostDate><BsCalendarWeek /> {post.date}</PostDate>
               <PostDescription>{post.description}</PostDescription>
-              <GigBtn>Apply</GigBtn>
+              <Link to='/apply' className='btn-gig'>Apply to Gig</Link>
             </PostDiv>
           ))
           }

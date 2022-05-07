@@ -28,31 +28,13 @@ text-align: center;
 padding-top: 10px;
 `;
 
-const NameInput = styled.input`
+const Message = styled.textarea`
 width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
   `;
-
-const CatInput = styled.input`
-width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-top: 10px;
-`;
-
-const DescInput = styled.input`
-width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-top: 10px;
-`;
 
 const SubmitBtn = styled.button`
 background: #6EBEED;
@@ -106,29 +88,17 @@ const ApplyGig = () => {
 
   return (
     <main>
-      <H3>Post a gig</H3>
+      <H3>Apply to Gig</H3>
       <PostWrapper>
         <PostDiv>
 
       <form onSubmit={handleFormSubmit}>
         
         <div>
-          <NameInput
-            placeholder="Name..."
-            name="author"
-            value={formState.author}
-            onChange={handleChange}
-            />
-            <CatInput
-              placeholder="Category..."
-              name="category"
-              value={formState.category}
-              onChange={handleChange}
-              />
-          <DescInput
-            placeholder="Description (date, time, etc)..."
+          <Message
+            placeholder="Write a message here!"
             name="description"
-            value={formState.description}
+            value={formState.author}
             onChange={handleChange}
             />
           <SubmitBtn type="submit">
