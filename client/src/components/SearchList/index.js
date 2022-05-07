@@ -23,10 +23,11 @@ import { BsCalendarWeek } from "react-icons/bs";
 
 // Flex structure and container styling
 const PostWrapper = styled.div`
-<<<<<<< HEAD
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 20px;
+  padding-bottom: 10px;
 `;
 
 const PostDiv = styled.div`
@@ -36,25 +37,9 @@ const PostDiv = styled.div`
   border-radius: 10px;
   width: 445px;
   height: 273px;
-=======
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-margin: 20px;
-padding-bottom: 10px;
-`;
-
-const PostDiv = styled.div`
-height: 100px;
-background: #F9F9F9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 10px;
-width: 445px;
-height: 273px;
-padding: 10px;
-margin-bottom: 20px;
-margin-right: 5px;
->>>>>>> main
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 5px;
 `;
 
 const H2 = styled.h2`

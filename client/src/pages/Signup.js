@@ -112,7 +112,7 @@ const Signup = () => {
             onChange={handleChange}
           />
           <StyledInput
-            placeholder="Your description"
+            placeholder="Tell us about yourself"
             name="description"
             type="text"
             value={formState.description}
