@@ -82,6 +82,10 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `;
 
+const StyledButton = styled(Link)`
+text-decoration:none;
+`;
+
 const SearchList = ({ posts }) => {
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
@@ -99,7 +103,7 @@ const SearchList = ({ posts }) => {
               <PostLocation><GoLocation /> {post.location}</PostLocation>
               <PostDate><BsCalendarWeek /> {post.date}</PostDate>
               <PostDescription>{post.description}</PostDescription>
-              <Link to='/apply' className='btn-gig'>Apply to Gig</Link>
+              <StyledButton to='/apply' className='btn-gig'>Apply to Gig</StyledButton>
             </PostDiv>
           ))
           }
