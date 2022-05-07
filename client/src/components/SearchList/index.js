@@ -30,6 +30,8 @@ const PostWrapper = styled.div`
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
+margin: 20px;
+padding-bottom: 10px;
 `;
 
 const PostDiv = styled.div`
@@ -39,6 +41,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 10px;
 width: 445px;
 height: 273px;
+padding: 10px;
+margin-bottom: 20px;
+margin-right: 5px;
 `;
 
 const H2 = styled.h2`
@@ -77,6 +82,25 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `;
 
+const GigBtn = styled.button`
+  background: #6EBEED;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  float: right;
+  &:focus {
+    background: white;
+  font-size: large;
+  color: #6EBEED;
+  padding: 10px 20px;
+  border: 1px solid #6EBEED;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+`;
 
 const SearchList = ({ posts }) => {
   if (!posts?.length) {
@@ -92,9 +116,10 @@ const SearchList = ({ posts }) => {
                 {post.user?.username && <StyledLink to={`/users/${post.user?._id}`}>{post.user.username}</StyledLink>}
                 {post.author}
               </PostTitle>
-              <PostLocation><GoLocation />  Charlotte Location</PostLocation>
-              <PostDate><BsCalendarWeek />  Time Date</PostDate>
+              <PostLocation><GoLocation /> {post.location}</PostLocation>
+              <PostDate><BsCalendarWeek /> {post.date}</PostDate>
               <PostDescription>{post.description}</PostDescription>
+              <GigBtn>Apply</GigBtn>
             </PostDiv>
           ))
           }
