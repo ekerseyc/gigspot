@@ -17,38 +17,35 @@ export const ADD_USER = gql`
     $username: String!
     $email: String!
     $password: String!
-    # $location: String
-    # $description: String
+    $location: String
+    $description: String
   ) {
     addUser(
       username: $username
       email: $email
       password: $password
-      #location: $location
-      #description: $description
+      location: $location
+      description: $description
     ) {
       token
       user {
         _id
         username
-        #location
-        #description
+        location
+        description
       }
     }
   }
 `;
 
 export const CREATE_POST = gql`
- mutation createPost($description: String!, $category: String!) {
-  createPost(description: $description, category: $category) {
-    _id
-    description
-    category
-    user {
-      username
+  mutation CreatePost($description: String!, $category: String!) {
+    createPost(description: $description, category: $category) {
+      _id
+      description
+      category
     }
   }
-}
 `;
 
 export const ADD_COMMENT = gql`

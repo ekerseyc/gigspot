@@ -10,36 +10,36 @@ import { useEffect } from 'react/cjs/react.production.min';
 
 // styled const
 const PostWrapper = styled.div`
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
 `;
 
 const PostDiv = styled.div`
-background: #F9F9F9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 10px;
-width: 50%;
-height: 50%;
-padding: 10px;
+  background: #f9f9f9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 50%;
+  height: 50%;
+  padding: 10px;
 `;
 
 const H3 = styled.h3`
-text-align: center;
-padding-top: 10px;
+  text-align: center;
+  padding-top: 10px;
 `;
 
 const NameInput = styled.input`
-width: 100%;
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  `;
+`;
 
 const CatInput = styled.input`
-width: 100%;
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -48,7 +48,7 @@ width: 100%;
 `;
 
 const DescInput = styled.input`
-width: 100%;
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -57,14 +57,14 @@ width: 100%;
 `;
 
 const SubmitBtn = styled.button`
-background: #6EBEED;
- font-size: large;
- color: white;
- padding: 10px 20px;
- border: none;
- border-radius: 4px;
- margin-top: 10px;
- float: right;
+  background: #6ebeed;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  float: right;
 `;
 
 const PostForm = () => {
@@ -75,7 +75,6 @@ const PostForm = () => {
 
 
   const [formState, setFormState] = useState({
-  
     description: '',
     category: '',
   });
@@ -94,21 +93,20 @@ const PostForm = () => {
 
     try {
       const { data } = await createPost({
-        variables: { ...formState, user: meData },
-      })
-      console.log(data)
+        variables: { ...formState },
+      });
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   if (data) {
     return (
       <p>
-        Success! You may now head{' '}
-        <Link to="/">back to the homepage.</Link>
+        Success! You may now head <Link to="/">back to the homepage.</Link>
       </p>
-    )
+    );
   }
 
   return (
@@ -116,9 +114,7 @@ const PostForm = () => {
       <H3>Post a gig</H3>
       <PostWrapper>
         <PostDiv>
-
           <form onSubmit={handleFormSubmit}>
-
             <div>
               <NameInput
                 placeholder="Name..."
@@ -138,9 +134,7 @@ const PostForm = () => {
                 value={formState.description}
                 onChange={handleChange}
               />
-              <SubmitBtn type="submit">
-                Submit
-              </SubmitBtn>
+              <SubmitBtn type="submit">Submit</SubmitBtn>
             </div>
           </form>
         </PostDiv>

@@ -24,10 +24,12 @@ const userSchema = new Schema({
 
   location: {
     type: String,
+    required: false,
   },
 
   description: {
     type: String,
+    required: false,
   },
   // passwordConfirm: {
   //   type: String,

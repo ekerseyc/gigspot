@@ -21,7 +21,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     post: async (_, args, context) => {
-      console.log("context", context.user);
+      console.log("context.user", context.user);
       return Post.find().populate('user');
     },
   },
@@ -58,9 +58,8 @@ const resolvers = {
       return { token, user };
     },
     createPost: async (_, { description, category }, context) => {
-      console.log('create post:', context.user)
       if (context.user) {
-        const post = await Post.create({ description, category });
+        const post = await Post.create({ description, category, user: context.user._id });
         console.log('postid', post._id)
         return User.findOneAndUpdate(
           { _id: context.user._id },
