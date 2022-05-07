@@ -84,13 +84,6 @@ const Profile = () => {
     );
   }
 
-  const renderUserList = () => {
-    if (usersLoading) return null;
-    // Only renders users who's profile we're not currently viewing
-    const notMeUsers = users.filter((o) => o._id !== user._id);
-    return <UserList users={notMeUsers} title="User List" />;
-  };
-
   const renderCurrentUserInfo = () => {
     if (!users || !user) return <p>Not Found</p>;
     return (
