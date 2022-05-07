@@ -57,6 +57,27 @@ footer a:hover {
   text-decoration: none;
 }
 
+.btn-gig {
+  background: #6EBEED;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  float: right;
+}
+
+  .btn-gig:focus {
+    background: white;
+  font-size: large;
+  color: #6EBEED;
+  padding: 10px 20px;
+  border: 1px solid #6EBEED;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
 .searchbox {
   text-align: center;
 }

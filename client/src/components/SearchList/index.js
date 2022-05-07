@@ -77,24 +77,9 @@ const StyledLink = styled(Link)`
   font-weight: bold;
 `;
 
-const GigBtn = styled.button`
-  background: #6ebeed;
-  font-size: large;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  margin-top: 10px;
-  float: right;
-  &:focus {
-    background: white;
-    font-size: large;
-    color: #6ebeed;
-    padding: 10px 20px;
-    border: 1px solid #6ebeed;
-    border-radius: 4px;
-    margin-top: 10px;
-  }
+const StyledButton = styled(Link)`
+text-decoration:none;
+
 `;
 
 const SearchList = ({ posts }) => {
@@ -105,27 +90,20 @@ const SearchList = ({ posts }) => {
     <>
       <div className="wrapper">
         <PostWrapper>
-          {posts &&
-            posts.map((post) => (
-              <PostDiv key={post._id}>
-                <PostTitle>
-                  {post.user?.username && (
-                    <StyledLink to={`/users/${post.user?._id}`}>
-                      {post.user.username}
-                    </StyledLink>
-                  )}
-                  {post.author}
-                </PostTitle>
-                <PostLocation>
-                  <GoLocation /> {post.location}
-                </PostLocation>
-                <PostDate>
-                  <BsCalendarWeek /> {post.date}
-                </PostDate>
-                <PostDescription>{post.description}</PostDescription>
-                <GigBtn>Apply</GigBtn>
-              </PostDiv>
-            ))}
+
+          {posts && posts.map((post) => (
+            <PostDiv key={post._id}>
+              <PostTitle>
+                {post.user?.username && <StyledLink to={`/users/${post.user?._id}`}>{post.user.username}</StyledLink>}
+                {post.author}
+              </PostTitle>
+              <PostLocation><GoLocation /> {post.location}</PostLocation>
+              <PostDate><BsCalendarWeek /> {post.date}</PostDate>
+              <PostDescription>{post.description}</PostDescription>
+              <StyledButton to='/apply' className='btn-gig'>Apply to Gig</StyledButton>
+            </PostDiv>
+          ))
+          }
         </PostWrapper>
         <div className="push"></div>
       </div>
