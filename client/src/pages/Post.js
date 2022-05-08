@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import { CREATE_POST } from "../utils/mutations";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
+import { CREATE_POST } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
+import styled from 'styled-components';
+import { useEffect } from 'react/cjs/react.production.min';
 
 // import Auth from '../utils/auth';
 
@@ -66,14 +68,16 @@ const SubmitBtn = styled.button`
 `;
 
 const PostForm = () => {
-  const [formState, setFormState] = useState({
-    author: "",
-    description: "",
-    category: "",
-  });
 
   const [createPost, { error, data }] = useMutation(CREATE_POST);
-  console.log("here", data);
+  const { loading, error: meError, data: meData } = useQuery(QUERY_ME);
+  console.log(meData)
+
+
+  const [formState, setFormState] = useState({
+    description: '',
+    category: '',
+  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;

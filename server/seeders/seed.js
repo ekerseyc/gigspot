@@ -7,44 +7,81 @@ db.once('open', async () => {
 
     console.log("post successful")
     await User.deleteMany({});
-    const user = await User.create({
-      username: "testuser",
-      email: "test@user.com",
-      password: "password1234",
-      location: "Charlotte",
-      description: "user",
-    });
+    const user = await User.create(
+      {
+        username: "Cristopher Eaton",
+        email: "cris@email.com",
+        password: "password",
+        location: "Charlotte",
+        description: "user",
+      },
+      {
+        username: "Angelina Kidd",
+        email: "angelina@email.com",
+        password: "password",
+        location: "Matthews",
+        description: "user",
+      },
+      {
+        username: "Mariyah Lucero",
+        email: "mariyah@email.com",
+        password: "password",
+        location: "Mint Hill",
+        description: "user",
+      },
+      {
+        username: "Dallas Solis",
+        email: "dallash@email.com",
+        password: "password",
+        location: "Asheville",
+        description: "user",
+      },
+    );
 
     const postData = [
       {
-        author: user.username,
+        username: "Cristopher Eaton",
+        author: "Cristopher Eaton",
         description: "Looking for a drummer to play in my band.",
         category: "Music",
-        user: user._id,
+
       },
       {
-        author: user.username,
+        author: "Angelina Kidd",
         description: "Need someone to illustrate the cover of my book.",
         category: "Artist",
-        user: user._id
       },
       {
-        author: user.username,
+        author: "Mariyah Lucero",
         description: "Photographer for wedding.",
         category: "Photographer",
-        user: user._id
+      },
+      {
+        author: "Dallas Solis",
+        description: "Photographer for wedding.",
+        category: "Photographer",
       }
     ];
+    // const items = await Post.insertMany(postData);
+    // console.log(items)
+    // const person = await User.findOneAndUpdate(
+    //   { username: user.username },
+    //   { $addToSet: { posts: items.map(item => item._id) } }
+    // )
 
+    for (let i = 0; i < postData.length; i++) {
+      const { _id, author } = await Post.create(postData[i]);
+      console.log(_id);
+      const person = await User.findOneAndUpdate(
+        { username: author },
+        { $addToSet: { posts: _id } }
+      );
 
-    const items = await Post.insertMany(postData);
-    const person = await User.findOneAndUpdate(
-      { _id: user._id },
-      { $addToSet: { posts: items.map(item => item._id) } }
-    )
+      console.log('person', person)
+    }
   } catch (err) {
     console.error(err);
-    process.exit(1);
+    process?.exit(1);
   }
-  process.exit(0);
+  process?.exit(0);
 });
