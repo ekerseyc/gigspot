@@ -20,6 +20,10 @@ export const QUERY_USER = gql`
       email
       location
       description
+      posts {
+        _id
+        description
+      }
     }
   }
 `;
@@ -33,6 +37,7 @@ export const QUERY_ME = gql`
       location
       description
       posts {
+        _id
         description
       }
     }
