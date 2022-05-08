@@ -14,14 +14,15 @@ const SignUpWrapper = styled.div`
   padding: 10px;
 `;
 
-const SignUpDiv = styled.div`
-  background: #f9f9f9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  width: 25%;
-  height: 50%;
-  padding: 10px;
-`;
+// const SignUpDiv = styled.div`
+// background: #F9F9F9;
+// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+// border-radius: 10px;
+// width: 25%;
+// height: 50%;
+// padding: 10px;
+// `;
+
 
 const H3 = styled.h3`
   text-align: center;
@@ -135,10 +136,10 @@ const Signup = () => {
     <main>
       <H3>Sign Up</H3>
       <SignUpWrapper>
-        <SignUpDiv>
-          {renderForm()}
-          {error && <div>{error.message}</div>}
-        </SignUpDiv>
+      <div className="signUpDiv">
+        {renderForm()}
+        {error && <div>{error.message}</div>}
+      </div>
       </SignUpWrapper>
     </main>
   );

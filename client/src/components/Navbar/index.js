@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import styled from 'styled-components';
+import './navbar.css';
 
 const StyledLink = styled(Link)`
 color: white;
@@ -12,22 +13,22 @@ text-decoration: none;
 font-size: large;
 `;
 
-const LogoutBtn = styled.button`
-  background: #273246;
-  font-size: medium;
-  color: white;
-  padding: 3px;
-  border: none;
-  border-radius: 4px;
-  &:focus {
-    background: white;
-    font-size: medium;
-    color: #273246;
-    padding: 3px;
-    border: none;
-    border-radius: 4px;
- }
-`;
+// const LogoutBtn = styled.button`
+//   background: #273246;
+//   font-size: medium;
+//   color: white;
+//   padding: 3px;
+//   border: none;
+//   border-radius: 4px;
+//   &:focus {
+//     background: white;
+//     font-size: medium;
+//     color: #273246;
+//     padding: 3px;
+//     border: none;
+//     border-radius: 4px;
+//  }
+// `;
 
 function Navbar() {
   const logout = (event) => {
@@ -38,12 +39,12 @@ function Navbar() {
   if (Auth.loggedIn()) {
     return (
       <>
-        <StyledLink to="/me">
+        <Link className="styledLink" to="/me">
           {Auth.getProfile().data.username}'s profile &nbsp;
-        </StyledLink>
-        <LogoutBtn onClick={logout}>
+        </Link>
+        <button className="logoutBtn" onClick={logout}>
           Logout
-        </LogoutBtn>
+        </button>
       </>
     );
   }

@@ -13,7 +13,7 @@ const Header = () => {
       <div>
         <Navbar />
         {Auth.loggedIn() ? (
-          <Link to='/post' className='btn-primary'>Post a gig</Link>
+          <Link to='/post' className='btn-primary postGig'>Post a gig</Link>
 
         ) : (
           <>

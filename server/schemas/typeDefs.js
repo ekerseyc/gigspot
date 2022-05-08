@@ -52,7 +52,10 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     createPost(description: String!, category: String!): Post
     editPost(postId: ID!, description: String!, category: String!): Post
-    removePost(postId: ID): Post
+
+    removePost(postId: ID!): Post
+    applyGig(description: String!): Post
+
   }
 `;
 
