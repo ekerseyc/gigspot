@@ -25,6 +25,10 @@ and (max-width : 480px) {
   .signUpDiv{
     width: 80%;
   }
+  .btn-gig {
+    font-size: medium;
+    padding: 5px 10px;
+  }
 }
 
 @media only screen

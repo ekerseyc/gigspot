@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../assets/Logo.svg";
 import { Link } from "react-router-dom";
+import './footer.css';
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
       <div className="footerColumn">
         <img src={Logo} alt="" />
       </div>
-      <ul>
+      <ul className="footerStyle">
         <li>
           <Link to="/login">Login</Link>
         </li>
