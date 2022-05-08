@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 // styled const
 const SignUpWrapper = styled.div`
-display: flex;
-flex-wrap: wrap;
-justify-content: space-around;
-padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 10px;
 `;
 
 // const SignUpDiv = styled.div`
@@ -23,52 +23,37 @@ padding: 10px;
 // padding: 10px;
 // `;
 
+
 const H3 = styled.h3`
-text-align: center;
-padding-top: 10px;
+  text-align: center;
+  padding-top: 10px;
 `;
 
-const UserInput = styled.input`
-width: 100%;
+const StyledInput = styled.input`
+  width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  `;
-
-const EmailInput = styled.input`
-width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-top: 10px;
-`;
-
-const PasswordInput = styled.input`
-width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-  margin-top: 10px;
 `;
 
 const SignUpBtn = styled.button`
-background: #6EBEED;
- font-size: large;
- color: white;
- padding: 10px 20px;
- border: none;
- border-radius: 4px;
- margin-top: 10px;
+  background: #6ebeed;
+  font-size: large;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
 `;
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
+    location: "",
+    description: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -98,38 +83,51 @@ const Signup = () => {
   const renderForm = () => {
     if (data) {
       return (
-      <p>
-        Success! You may now head{' '}
-        <Link to="/">back to the homepage.</Link>
-      </p>
-      )
-    } 
+        <p>
+          Success! You may now head <Link to="/">back to the homepage.</Link>
+        </p>
+      );
+    }
     return (
       <form onSubmit={handleFormSubmit}>
-        <UserInput
-          placeholder="Your username"
-          name="username"
-          type="text"
-          value={formState.name}
-          onChange={handleChange}
-        />
-        <EmailInput
-          placeholder="Your email"
-          name="email"
-          type="email"
-          value={formState.email}
-          onChange={handleChange}
-        />
-        <PasswordInput
-          placeholder="******"
-          name="password"
-          type="password"
-          value={formState.password}
-          onChange={handleChange}
-        />
-        <SignUpBtn type="submit">
-          Submit
-        </SignUpBtn>
+        <div style={{ display: "flex", gap: "10px", flexDirection: "column" }}>
+          <StyledInput
+            placeholder="Your username"
+            name="username"
+            type="text"
+            value={formState.name}
+            onChange={handleChange}
+          />
+          <StyledInput
+            placeholder="Your email"
+            name="email"
+            type="email"
+            value={formState.email}
+            onChange={handleChange}
+          />
+          <StyledInput
+            placeholder="Your location"
+            name="location"
+            type="text"
+            value={formState.location}
+            onChange={handleChange}
+          />
+          <StyledInput
+            placeholder="Tell us about yourself"
+            name="description"
+            type="text"
+            value={formState.description}
+            onChange={handleChange}
+          />
+          <StyledInput
+            placeholder="******"
+            name="password"
+            type="password"
+            value={formState.password}
+            onChange={handleChange}
+          />
+        </div>
+        <SignUpBtn type="submit">Submit</SignUpBtn>
       </form>
     );
   };
