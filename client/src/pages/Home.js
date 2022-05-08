@@ -31,6 +31,7 @@ const Home = () => {
     setFilteredPosts(posts);
   }, [posts]);
 
+
   return (
     <>
       <main>

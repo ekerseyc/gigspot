@@ -13,6 +13,9 @@ const postSchema = new Schema({
     required: true,
     trim: true,
   },
+  author: {
+    type: String,
+  },
   slug: String,
   ratingsAverage: {
     type: Number,

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { GoLocation } from "react-icons/go";
 import { BsCalendarWeek } from "react-icons/bs";
 
+import { REMOVE_POST } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 // Put data in styling, put in button that links to user page
 // CSS grid to put them on the page
 
@@ -95,9 +97,27 @@ const GigBtn = styled.button`
     border-radius: 4px;
     margin-top: 10px;
   }
-`;
+  `;
+  
+  
+  const SearchList = ({ posts }) => {
+    console.log(posts)
+    
+    const [removePost, { error }] = useMutation(REMOVE_POST);
+    
+    const handleDeletePost = async (postId) => {
+      console.log(postId)
+      try {
+        const response = await removePost({
+          variables: { postId: postId },
+        })
 
-const SearchList = ({ posts }) => {
+        removePost(postId)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
   if (!posts?.length) {
     return <H2>No Posts Yet...</H2>;
   }
@@ -123,7 +143,7 @@ const SearchList = ({ posts }) => {
                   <BsCalendarWeek /> {post.date}
                 </PostDate>
                 <PostDescription>{post.description}</PostDescription>
-                <GigBtn>Apply</GigBtn>
+                {window.location.pathname.includes("/me") && <button onClick={() => handleDeletePost(post._id)}>Delete</button>}
               </PostDiv>
             ))}
         </PostWrapper>

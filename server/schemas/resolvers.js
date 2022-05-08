@@ -33,9 +33,9 @@ const resolvers = {
       return { token, user };
     },
     editUser: async (_, args) => {
-      console.log(args)
+      console.log(args);
       return User.findOneAndUpdate(
-        { _id: args.userId },
+        { userId: args.userId },
         { $set: { email: args.email, username: args.username, location: args.location, description: args.description } },
         { new: true, runValidators: true }
       )
@@ -60,7 +60,6 @@ const resolvers = {
     createPost: async (_, { description, category }, context) => {
       if (context.user) {
         const post = await Post.create({ description, category, user: context.user._id });
-        console.log('postid', post._id)
         return User.findOneAndUpdate(
           { _id: context.user._id },
           { $addToSet: { posts: post._id } },
