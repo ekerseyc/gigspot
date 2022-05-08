@@ -4,22 +4,13 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import styled from 'styled-components';
 import Auth from '../utils/auth';
-
+import './styles.css';
 
 // styled const
 const LoginWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  padding: 10px;
-`;
-
-const LoginDiv = styled.div`
-  background: #F9F9F9;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  width: 25%;
-  height: 50%;
   padding: 10px;
 `;
 
@@ -124,11 +115,11 @@ const Login = () => {
     <main>
       <H3>Login</H3>
       <LoginWrapper>
-        <LoginDiv>
+        <div className='loginDiv'>
           {renderForm()}
 
           {error && <div>{error.message}</div>}
-        </LoginDiv>
+        </div>
       </LoginWrapper>
     </main>
   );

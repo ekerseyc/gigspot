@@ -94,3 +94,36 @@ footer ul {
 .profileCon ul {
   list-style: none;
 }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-width : 320px)
+and (max-width : 480px) {
+  .btn-primary{ 
+    font-size: medium;
+    margin: 1em 1em;
+    position: absolute;
+    right: 5px;
+    top: 50px;
+  }
+}
+
+@media only screen
+and (min-width : 481px)
+and (max-width : 767px) {
+  .btn-primary{ 
+    font-size: medium;
+    margin: 1em 1em;
+    position: absolute;
+    right: 5px;
+    top: 50px;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-width : 768px)
+and (max-width : 1024px) {
+
+}
+
