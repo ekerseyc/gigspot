@@ -154,22 +154,6 @@ text-decoration:none;
                 {window.location.pathname.includes("/me") && <button onClick={() => handleDeletePost(post._id)}>Delete</button>}
               </PostDiv>
             ))}
-
-
-          {posts && posts.map((post) => (
-            <PostDiv key={post._id}>
-              <PostTitle>
-                {post.user?.username && <StyledLink to={`/users/${post.user?._id}`}>{post.user.username}</StyledLink>}
-                {post.author}
-              </PostTitle>
-              <PostLocation><GoLocation /> {post.location}</PostLocation>
-              <PostDate><BsCalendarWeek /> {post.date}</PostDate>
-              <PostDescription>{post.description}</PostDescription>
-              <StyledButton to='/apply' className='btn-gig'>Apply to Gig</StyledButton>
-            </PostDiv>
-          ))
-          }
-
         </PostWrapper>
         <div className="push"></div>
       </div>
