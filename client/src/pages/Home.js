@@ -20,6 +20,7 @@ const Home = () => {
   // const { loading, data } = useQuery(QUERY_USERS);
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.post || [];
+  console.log('posts:', posts);
 
   const [initialPosts, setInitialPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);

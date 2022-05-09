@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
+import { APPLY_GIG } from '../utils/mutations';
 import styled from 'styled-components';
 
 // import Auth from '../utils/auth';
@@ -46,67 +47,69 @@ background: #6EBEED;
  float: right;
 `;
 
-// const ApplyGig = () => {
-//   const [formState, setFormState] = useState({
-//     description: ''
-//   });
+const ApplyGig = () => {
+  const [formState, setFormState] = useState({
+    description: ''
+  });
 
+  const [applyGig, { error, data }] = useMutation(APPLY_GIG);
+  console.log('here', data);
 
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-//     setFormState({
-//       ...formState,
-//       [name]: value,
-//     });
-//   };
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-//     try {
-//       const { data } = await applyGig({
-//         variables: { ...formState },
-//       })
-//       console.log(data)
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
+    try {
+      const { data } = await applyGig({
+        variables: { ...formState },
+      })
+      console.log(data)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
-//   if (data) {
-//     return (
-//     <p>
-//       Success! You may now head{' '}
-//       <Link to="/">back to the homepage.</Link>
-//     </p>
-//     )
-//   } 
+  if (data) {
+    return (
+    <p>
+      Success! You may now head{' '}
+      <Link to="/">back to the homepage.</Link>
+    </p>
+    )
+  } 
 
-//   return (
-//     <main>
-//       <H3>Apply to Gig</H3>
-//       <PostWrapper>
-//         <PostDiv>
+  return (
+    <main>
+      <H3>Apply to Gig</H3>
+      <PostWrapper>
+        <PostDiv>
 
-//       <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
         
-//         <div>
-//           <Message
-//             placeholder="Write a message here!"
-//             name="description"
-//             value={formState.author}
-//             onChange={handleChange}
-//             />
-//           <SubmitBtn type="submit">
-//             Submit
-//           </SubmitBtn>
-//         </div>
-//       </form>
-//             </PostDiv>
-//             </PostWrapper>
-//     </main>
-//   );
-// };
+        <div>
+          <Message
+            placeholder="Write a message here!"
+            name="description"
+            value={formState.author}
+            onChange={handleChange}
+            />
+          <SubmitBtn type="submit">
+            Submit
+          </SubmitBtn>
+        </div>
+      </form>
+            </PostDiv>
+            </PostWrapper>
+    </main>
+  );
+};
 
-// export default ApplyGig;
+export default ApplyGig;
