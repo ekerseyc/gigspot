@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+html, body {
+  height: 100%;
+}
+
+div#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
 
 html,
 * {
