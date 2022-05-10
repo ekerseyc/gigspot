@@ -154,14 +154,14 @@ const Profile = () => {
   };
 
   return (
-    <div>
+    <main>
       <H2>Viewing {id ? `${user.username}'s` : "your"} profile.</H2>
       <ProfileWrapper>
         <ProfileDiv>
           {renderCurrentUserInfo(editing, setEditing)}
         </ProfileDiv>
       </ProfileWrapper>
-    </div>
+    </main>
   );
 };
 
